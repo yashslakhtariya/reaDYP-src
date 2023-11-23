@@ -1,0 +1,31 @@
+<nav id="navbarID" class="navbar navbar-expand-sm navbar-dark bg-dark" *ngIf="showNavbar()">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img class="logo" src="../../assets/logo2.png" alt="" srcset="">
+            <span class="name">ReaDYP</span>
+        </a>
+
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarID"
+            aria-controls="navbarID" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarID">
+            <div class="navbar-nav">
+                <a class="nav-link " aria-current="page" routerLink="/home" routerLinkActive="active" >Home</a>
+                <a class="nav-link " aria-current="page" routerLink="/explore" routerLinkActive="active">Explore</a>
+                <a class="nav-link " aria-current="page" routerLink="/glimpse" routerLinkActive="active">Glimpse</a>
+                <a class="nav-link " aria-current="page" routerLink="/aboutus" routerLinkActive="active">About Us</a>
+                <div class="username">
+                    <i class="fa fa-user u-icon" aria-hidden="true" routerLink="/readlist"></i>
+                    <span>Hello, User!</span>
+                </div>
+                <div class="wish-list">
+                    <i class="fa fa-heart" aria-hidden="true" routerLink="/readlist"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<router-outlet> </router-outlet>

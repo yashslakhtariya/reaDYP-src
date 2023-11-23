@@ -1,0 +1,61 @@
+.main {
+  background-image: url('../../assets/login1.png');
+  background-size: cover;
+  background-position: 0px 10%;
+  color: white;
+  padding: 40px;
+  font-family: "roboto";
+  min-height: 100vh;
+}
+
+.team {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px;
+}
+
+.card {
+  color: white;
+  width: 400px;
+  margin-right: 25px;
+  font-family: roboto;
+  background-color: rgb(33,37,41);
+  height: 500px;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: scale(1.025);
+}
+
+.card-img-top {
+  object-fit: cover;
+  height: 300px;
+  
+  }
+.prarthi{
+  object-position: 40% 10%;
+}
+.dhruvi{
+  object-position: 40% 0%;
+}
+.yash{
+  object-position: 40% 90%;
+}
+.card-title {
+  text-transform: uppercase;
+  font-size: 25px;
+  color: white;
+}
+
+.role {
+  font-size: 17px;
+  color: rgb(179, 177, 177);
+  padding-bottom: 20px;
+}
+
+.card-text {
+  font-size: 17px;
+  font-weight: 300;
+}

@@ -1,0 +1,31 @@
+<div class="main container-fluid">
+  <div class="row login-container">
+    <div class="col-md-6 left-side">
+      <img class="logo" src="../../assets/logo.png" alt="ReaDYP Logo">
+      <h1 class="title">Welcome to ReaDYP</h1>
+      <p class="tagline">ReaDYP for Deep Readers</p>
+      <p class="catchy-message">Discover the world of deep reading. Sign up or log in to dive right into it!</p>
+    </div>
+    <div class="col-md-6 right-side">
+      <div class="login-form-container">
+        <div class="login-form">
+          <h2>Login</h2>
+          <form>
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input type="text" id="username" name="username" [(ngModel)]="username" required>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password" [(ngModel)]="password" required>
+            </div>
+            <div class="form-group">
+              <button class="btn btn-primary" (click)="login()">Login</button>
+              <button class="btn btn-secondary" (click)="signup()">Sign Up</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

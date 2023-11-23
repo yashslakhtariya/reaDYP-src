@@ -1,0 +1,89 @@
+.logo {
+    height: 60px;
+    margin-left: 10%;
+}
+
+.name{
+    font-family: "roboto";
+    font-size: 25px;
+    font-weight: 600;
+    margin-left: 5px;
+}
+.navbar {
+    height: 4.5rem;
+}
+.navbar-brand{
+    margin-right: 0%;
+}
+.navbar-nav {
+    font-family:"Roboto";
+    flex: 1;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-nav .nav-link {
+    line-height: 1;
+}
+.active {
+    color:white !important
+}
+.navbar-nav a {
+    color:#bbbbbbee;
+    padding-bottom: 15px;
+    margin-right: 5%; 
+    font-size: 1.1rem;
+    font-weight: 400;
+    font-family: "roboto";
+    transition: all 0.2s ease-in-out;
+}
+.navbar-nav a:hover{
+    color:white;
+}
+.username {
+    display: flex;
+    align-items: center;
+    margin-right: 0px;
+    padding-bottom: 5px;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    margin-left:400px ;
+  }
+  
+  .username span {
+    margin-right: 10px;
+  }
+.wish-list {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-left: 35px;
+    padding-right: 0px;
+}
+.u-icon{
+    margin-right: 10px;
+    font-size: 15px; 
+    background-color: transparent;
+    padding: 10px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+.wish-list i {
+    margin-left: 10px;
+    font-size: 15px; 
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 50%;
+    padding: 10px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.wish-list i:hover {
+    background-color:white;
+    color: rgb(32, 32, 32);
+}

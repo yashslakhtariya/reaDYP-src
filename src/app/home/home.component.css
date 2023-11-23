@@ -1,0 +1,12 @@
+.carousel {
+    margin: 0 auto;
+    background-color: black;
+    box-shadow: 10px 15px 20px rgba(0, 0, 0, 0.4);
+}
+
+.carousel-item img {
+    height: 600px;
+    opacity: 0.5;
+    object-fit: cover;
+    /* border: 5px solid red; */
+}
