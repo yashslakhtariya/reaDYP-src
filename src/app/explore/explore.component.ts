@@ -10,11 +10,12 @@ export class ExploreComponent {
   subjects: string[] = ['Science', 'Fiction', 'History', 'Technology', 'Romance', 'Spiritual', 'Drama', 'Horror']; // You can add more subjects
   selectedSubject: string = '';
   bookSuggestions: any[] = [];
+  results: number = 5;
 
   constructor(private googleBooksService: GoogleBooksService) { }
   onSubjectSelected() {
     if (this.selectedSubject) {
-      this.googleBooksService.searchBooksBySubject(this.selectedSubject)
+      this.googleBooksService.searchBooksBySubject(this.selectedSubject, this.results.toString())
         .subscribe((data: any) => {
           this.bookSuggestions = this.shuffleArray(data.items || []);
         });
@@ -36,4 +37,11 @@ export class ExploreComponent {
     return array;
   }
 
+  moreresults() {
+    this.results = this.results + 5;
+    this.onSubjectSelected();
+  }
+  reset(){
+    this.results = 5;
+  }
 }

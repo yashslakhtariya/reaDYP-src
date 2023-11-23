@@ -10,10 +10,10 @@ export class GoogleBooksService {
 
   constructor(private http: HttpClient) { }
 
-  searchBooksBySubject(subject: string) {
+  searchBooksBySubject(subject: string, n: string) {
     const params = {
       q: `subject:${subject}`,
-      maxResults: '5',
+      maxResults: n,
       key: this.apiKey 
     };
 
