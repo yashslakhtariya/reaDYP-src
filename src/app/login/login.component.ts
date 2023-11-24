@@ -54,6 +54,7 @@ export class LoginComponent {
           // Handle error (e.g., display an error message)
         },
         complete: () => {
+          alert('You can login now!');
           // Handle completion if needed
         }
       });
