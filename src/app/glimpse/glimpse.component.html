@@ -20,6 +20,7 @@
             <p class="card-subtitle mb-2">
               <strong>Author(s):</strong> {{ book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'N/A' }}
             </p>
+            <p class="card-text">{{ book.volumeInfo.description || 'No description available' }}</p>
           </div>
         </div>
       </div>
