@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+
+  # Database Service
+  database:
+    image: database
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: yes
+      MYSQL_DATABASE: reaDYP_users
+    ports:
+      - "3308:3306"
+    # command: --default-authentication-plugin=mysql_native_password
+
+  # Frontend Service
+  frontend:
+    image: frontend
+    ports:
+      - "6001:4200"
+    depends_on:
+      - backend
+
+  # Backend Service
+  backend:
+    image: backend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - database

@@ -9,10 +9,11 @@ const port = 3000;
 app.use(cors());
 app.use(bodyParser.json());
 
-const connection = mysql.createConnection({
-     host: "localhost",
+let connection = mysql.createConnection({
+     host: "database",
+     port: 3308,
      user: "root",
-     password: "0000",
+     // password: "rdyp",
      database: "reaDYP_users",
 });
 
