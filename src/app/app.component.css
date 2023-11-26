@@ -55,11 +55,12 @@
     font-size: 16px;
     font-weight: 500;
     margin-left:400px ;
-  }
-  
-  .username span {
-    margin-right: 10px;
-  }
+}
+
+.username span {
+margin-right: 10px;
+}
+
 .wish-list {
     display: flex;
     align-items: center;
