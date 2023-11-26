@@ -27,7 +27,7 @@ export class LoginComponent {
           console.log('Login successful:', response);
           this.isLoggedIn = true; // set the isLoggedIn variable to true
           alert('Login successful!');
-          this.sharedService.username = this.username;
+          this.sharedService.setusername(this.username);
           this.cdr.detectChanges();
           this.router.navigate(['/home']);
           // Handle success (e.g., redirect to another page)

@@ -17,7 +17,7 @@ export class ExploreComponent implements OnInit {
 
   constructor(private googleBooksService: GoogleBooksService,
     public sharedService: SharedService,
-    private wishlistService: WishlistService
+    private wishlistService: WishlistService,
   ) { }
 
   ngOnInit() {
@@ -33,6 +33,9 @@ export class ExploreComponent implements OnInit {
           this.bookSuggestions = this.shuffleArray(data.items || []);
         });
     }
+    this.sharedService.username$.subscribe((username) => {
+      this.username = username;
+    });
   }
 
   //Function to shuffle an array randomly
@@ -59,7 +62,6 @@ export class ExploreComponent implements OnInit {
   }
 
   addToWishlist(book: any) {
-    // Call the WishlistService to add the book to the wishlist
     this.wishlistService.addToWishlist(this.username, book)
       .subscribe({
         next: (response: any) => {
