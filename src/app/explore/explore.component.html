@@ -25,7 +25,7 @@
                 <strong>Author(s):</strong> {{ book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'N/A' }}
               </p>
               <!-- You can add your own functionality to the button -->
-              <button class="btn btn-primary">Add</button>
+              <button class="btn btn-primary" (click)="addToWishlist(book)">Add</button>
             </div>
           </div>
         </div>

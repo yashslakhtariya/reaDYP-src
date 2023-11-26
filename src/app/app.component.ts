@@ -17,16 +17,10 @@ export class AppComponent implements OnInit {
       this.user = username.charAt(0).toUpperCase() + username.slice(1);
     });
   }
-  isUserShow: boolean = false;
   user: any;
-
-  showUser() {
-    this.isUserShow = !this.isUserShow;
-  }
 
   showNavbar(): boolean {
     const currentRoute = this.router.url;
-
     return !currentRoute.includes('/login');
   }
 }

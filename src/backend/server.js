@@ -52,6 +52,36 @@ app.post('/login', (req, res) => {
      });
 });
 
+app.post('/wishlist/add', (req, res) => {
+     const { username, title, authors, infoLink, imageLink } = req.body;
+
+     // Check if the book is already in the wishlist
+     const checkDuplicateSql = 'SELECT * FROM wishlist WHERE username = ? AND title = ? AND authors = ?';
+     connection.query(checkDuplicateSql, [username, title, authors], (err, duplicateResult) => {
+          if (err) {
+               console.error(err);
+               res.status(500).send('Error checking duplicate wishlist item');
+          } else {
+               if (duplicateResult.length === 0) {
+                    // Insert the book into the wishlist
+                    const insertSql = 'INSERT INTO wishlist (username, title, authors, infoLink, imageLink) VALUES (?, ?, ?, ?, ?)';
+                    connection.query(insertSql, [username, title, authors, infoLink, imageLink], (insertErr, insertResult) => {
+                         if (insertErr) {
+                              console.error(insertErr);
+                              res.status(500).send('Error adding book to wishlist');
+                         } else {
+                              res.status(200).send('Book added to wishlist');
+                         }
+                    });
+               } else {
+                    // Book is already in the wishlist
+                    res.status(200).send('Book is already in the wishlist');
+               }
+          }
+     });
+});
+
+
 app.listen(port, () => {
      console.log(`Server is running on port ${port}`);
 });
