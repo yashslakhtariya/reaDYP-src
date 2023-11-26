@@ -1,21 +1,29 @@
 <div class="main">
-    <div class="search-bar">
-        <input type="text" class="search-input" placeholder="Enter book name" required>
-        <button class="search-btn">
-          <i class="fas fa-search"></i>
-        </button>
-      </div>
-      <div class="container">
-        <div class="card">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="card-body">
-                <h5 class="card-title">Book Title 2</h5>
-                <p class="card-subtitle mb-2">Author 2</p>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-              </div>
-            </div>
+  <div class="search-bar">
+    <input type="text" class="search-input" id="author" placeholder="Enter Author name" [(ngModel)]="authorName" required>
+    <button class="search-btn" (click)="onAuthorSearch()">
+      <i class="fas fa-search"></i>
+    </button>
+  </div>
+
+  <div class="container">
+    <div class="card" *ngFor="let book of authorBooks">
+      <div class="row">
+        <div class="col-md-3">
+          <a [href]="book.volumeInfo.infoLink" target="_blank">
+            <img [src]="book.volumeInfo.imageLinks?.thumbnail" class="card-img-top" alt="Book Image">
+          </a>
+        </div>
+        <div class="col-md-9">
+          <div class="card-body">
+            <h5 class="card-title">{{ book.volumeInfo.title }}</h5>
+            <p class="card-subtitle mb-2">
+              <strong>Author(s):</strong> {{ book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'N/A' }}
+            </p>
           </div>
         </div>
+      </div>
     </div>
+  </div>
+  
 </div>
