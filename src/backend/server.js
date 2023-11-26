@@ -25,7 +25,7 @@ app.post("/signup", (req, res) => {
      connection.query(sql, [username, password], (err, result) => {
           if (err) {
                console.error(err);
-               res.status(500).send("error");
+               res.status(500).send(`Error signing up: ${err.message}`);
           } else {
                res.status(200).send("done");
           }

@@ -42,21 +42,21 @@ export class LoginComponent {
         }
       });
   }
-
+  signup2(){
+    const un = /^[A-Z][a-z]+$/;
+    const pwd = /^[A-Za-z]+[@#]+[0-9]+$/;
+    if (un.test(this.username) && pwd.test(this.password)) {
+      this.users.push({
+        username: this.username,
+        password: this.password
+      });
+      // alert('Signup successful!');
+    }
+    else {
+      alert("Kindly check the format again")
+    }
+  }
   signup() {
-    // // Add the new user to the list
-    // const un = /^[A-Z][a-z]+$/;
-    // const pwd = /^[A-Za-z]+[@#]+[0-9]+$/;
-    // if (un.test(this.username) && pwd.test(this.password)) {
-    //   this.users.push({
-    //     username: this.username,
-    //     password: this.password
-    //   });
-    //   // alert('Signup successful!');
-    // }
-    // else {
-    //   alert("Kindly check the format again")
-    // }
     const data = { username: this.username, password: this.password };
     this.userService.signup(data)
       .subscribe({
