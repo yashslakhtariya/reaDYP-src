@@ -81,6 +81,19 @@ app.post('/wishlist/add', (req, res) => {
      });
 });
 
+app.get('/readlist/:username', (req, res) => {
+     const username = req.params.username;
+
+     const sql = 'SELECT * FROM wishlist WHERE username = ?';
+     connection.query(sql, [username], (err, result) => {
+          if (err) {
+               console.error(err);
+               res.status(500).send('Error fetching readlist');
+          } else {
+               res.status(200).json(result);
+          }
+     });
+});
 
 app.listen(port, () => {
      console.log(`Server is running on port ${port}`);

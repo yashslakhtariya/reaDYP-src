@@ -16,7 +16,13 @@ export class LoginComponent {
   password: string = '';
   isLoggedIn: boolean = false; // add this line
 
-  constructor(private router: Router, private userService: UserService, private userLoginService: UserLoginService, public sharedService: SharedService, private cdr: ChangeDetectorRef) { }
+  constructor(
+    private router: Router,
+    private userService: UserService,
+    private userLoginService: UserLoginService,
+    public sharedService: SharedService,
+    private cdr: ChangeDetectorRef
+  ) { }
 
   login() {
     const credentials = { username: this.username, password: this.password };
@@ -42,7 +48,7 @@ export class LoginComponent {
         }
       });
   }
-  signup2(){
+  signup2() {
     const un = /^[A-Z][a-z]+$/;
     const pwd = /^[A-Za-z]+[@#]+[0-9]+$/;
     if (un.test(this.username) && pwd.test(this.password)) {
@@ -53,7 +59,7 @@ export class LoginComponent {
       // alert('Signup successful!');
     }
     else {
-      alert("Kindly check the format again")
+      alert("Kindly check the format again");
     }
   }
   signup() {
