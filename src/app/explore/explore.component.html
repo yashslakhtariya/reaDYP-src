@@ -12,19 +12,16 @@
       <div class="card" *ngFor="let book of bookSuggestions">
         <div class="row">
           <div class="col-md-3">
-            <!-- Display the book cover as an image link -->
             <a [href]="book.volumeInfo.infoLink" target="_blank">
               <img [src]="book.volumeInfo.imageLinks?.thumbnail" class="card-img-top" alt="Book Image">
             </a>
           </div>
           <div class="col-md-9">
             <div class="card-body">
-              <!-- Use Angular interpolation to bind dynamic data -->
               <h5 class="card-title">{{ book.volumeInfo.title }}</h5>
               <p class="card-subtitle mb-2">
                 <strong>Author(s):</strong> {{ book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'N/A' }}
               </p>
-              <!-- You can add your own functionality to the button -->
               <button class="btn btn-primary" (click)="addToWishlist(book)">Add</button>
             </div>
           </div>

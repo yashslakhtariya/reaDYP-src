@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ReadlistService } from '../readlist.service';
+import { SharedService } from '../shared.service';
 
 @Component({
   selector: 'app-readlist',
@@ -6,5 +8,27 @@ import { Component } from '@angular/core';
   styleUrls: ['./readlist.component.css']
 })
 export class ReadlistComponent {
+  readlistbooks: any[] = [];
+  user: any;
+  constructor(private readlistService: ReadlistService, public sharedService: SharedService) { }
 
+  ngOnInit(): void {
+    this.sharedService.username$.subscribe((username) => {
+      this.user = username.charAt(0).toUpperCase() + username.slice(1);
+    });
+    this.readlistService.getReadlist(this.user)
+      .subscribe({
+        next: (books: any[]) => {
+          this.readlistbooks = books;
+          console.log('Readlist books:', books);
+        },
+        error: (error: any) => {
+          console.error('Error fetching readlist:', error);
+          // Handle error (e.g., display an error message)
+        },
+        complete: () => {
+          // Handle completion if needed
+        }
+      });
+  }
 }

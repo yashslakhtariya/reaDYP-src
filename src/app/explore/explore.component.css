@@ -1,7 +1,5 @@
 .main {
-    background-image: url('../../assets/image2.png'); 
-    background-size: cover;
-    /* background-position: top; */
+    background-color:rgb(51, 59, 68);
     min-height:100vh;
     color: white;
     padding: 20px;
@@ -43,11 +41,13 @@
     width: 50%;
     font-size: 16px;
     border-radius: 10px;
+    
   }
   select:focus{
     outline: 2px solid rgb(147, 153, 156);
     box-shadow: none;
   }
+
   .book-cards{
     display:flex;
     justify-content: center;
@@ -55,6 +55,7 @@
   }
   .book-cards .card {
     background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0,0.7);
     color: white;
     margin: 10px;
     height: 200px;
@@ -120,3 +121,4 @@
     background-color: #dfdfdf;
     color:#212529;
   }
+

@@ -1,8 +1,9 @@
 .main {
     background-image: url('../../assets/image2.png');
     background-size: cover;
-    /* background-position: center; */
-    background-repeat: no-repeat;
+    background-position: center;
+    /* background-color:rgb(51, 59, 68); */
+    background-repeat: repeat;
     min-height: 100vh; 
     color: white;
     font-family: "Roboto", sans-serif;
@@ -46,10 +47,12 @@
     margin-top: 22px;
   }
   .card {
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.65);
+    border-radius: 20px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
     color: white;
     margin: 10px;
-    height: 200px;
+    min-height: 200px;
     width: 90%;
   }
 
