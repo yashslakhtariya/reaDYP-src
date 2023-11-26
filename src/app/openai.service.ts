@@ -7,14 +7,14 @@ import { Configuration, OpenAIApi } from 'openai';
 export class OpenaiService {
   private openai: OpenAIApi;
   configuration = new Configuration({
-    apiKey: "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",
+    apiKey: "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",
     organization: 'org-Gj4poG4czUd9dVOpEgi0nb2q'
   });
 
   constructor() {
     this.openai = new OpenAIApi(this.configuration);
     this.configuration.baseOptions.headers = {
-      Authorization: "Bearer " + "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"
+      Authorization: "Bearer " + "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"
     };
   }
 

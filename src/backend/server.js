@@ -95,6 +95,21 @@ app.get('/readlist/:username', (req, res) => {
      });
 });
 
+app.delete('/wishlist/delete/:username/:title/:authors', (req, res) => {
+     const { username, title, authors } = req.params;
+
+     // Delete the book from the wishlist
+     const sql = 'DELETE FROM wishlist WHERE username = ? AND title = ? AND authors = ?';
+     connection.query(sql, [username, title, authors], (err, result) => {
+          if (err) {
+               console.error(err);
+               res.status(500).send('Error deleting book from wishlist');
+          } else {
+               res.status(200).send('Book deleted from wishlist');
+          }
+     });
+});
+
 app.listen(port, () => {
-     console.log(`Server is running on port ${port}`);
+     console.log(`\nServer is running on port ${port}`);
 });
