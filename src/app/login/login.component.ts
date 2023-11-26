@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../user.service';
 import { UserLoginService } from '../user-login.service';
+import { SharedService } from '../shared.service';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +16,7 @@ export class LoginComponent {
   password: string = '';
   isLoggedIn: boolean = false; // add this line
 
-  constructor(private router: Router, private userService: UserService, private userLoginService: UserLoginService) { }
+  constructor(private router: Router, private userService: UserService, private userLoginService: UserLoginService, public sharedService: SharedService, private cdr: ChangeDetectorRef) { }
 
   login() {
     const credentials = { username: this.username, password: this.password };
@@ -24,6 +26,9 @@ export class LoginComponent {
         next: (response: any) => {
           console.log('Login successful:', response);
           this.isLoggedIn = true; // set the isLoggedIn variable to true
+          alert('Login successful!');
+          this.sharedService.username = this.username;
+          this.cdr.detectChanges();
           this.router.navigate(['/home']);
           // Handle success (e.g., redirect to another page)
         },
