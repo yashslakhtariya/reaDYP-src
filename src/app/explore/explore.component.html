@@ -31,5 +31,7 @@
         </div>
       </div>
     </div>
-    <button class="btn btn-primary" (click)="moreresults()">More</button>
+    <div class="more" *ngIf="selectedSubject!=''">
+      <button class="btn more-btn" (click)="moreresults()">More</button>
+    </div>
 </div>

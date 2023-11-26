@@ -32,6 +32,26 @@ app.post("/signup", (req, res) => {
      });
 });
 
+app.post('/login', (req, res) => {
+     const { username, password } = req.body;
+
+     const sql = 'SELECT * FROM users WHERE username = ? AND password = ?';
+     connection.query(sql, [username, password], (err, result) => {
+          if (err) {
+               console.error(err);
+               res.status(500).send('Error checking credentials');
+          } else {
+               if (result.length > 0) {
+                    // User found, credentials are valid
+                    res.status(200).send('done');
+               } else {
+                    // No user found with provided credentials
+                    res.status(401).send('error');
+               }
+          }
+     });
+});
+
 app.listen(port, () => {
      console.log(`Server is running on port ${port}`);
 });
