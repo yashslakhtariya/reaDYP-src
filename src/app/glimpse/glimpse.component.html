@@ -1,7 +1,7 @@
 <div class="main">
     <div class="search-bar">
-        <input type="text" class="search-input" placeholder="Enter book name" required>
-        <button class="search-btn">
+        <input [(ngModel)]='book' type="text" class="search-input" placeholder="Enter 'bookname' by 'Author(s)'" required>
+        <button class="search-btn" (click)="generateText(book)">
           <i class="fas fa-search"></i>
         </button>
       </div>
@@ -10,9 +10,7 @@
           <div class="row">
             <div class="col-md-12">
               <div class="card-body">
-                <h5 class="card-title">Book Title 2</h5>
-                <p class="card-subtitle mb-2">Author 2</p>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p class="card-text">{{outputtxt}}</p>
               </div>
             </div>
           </div>
