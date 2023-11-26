@@ -1,7 +1,7 @@
 .main {
     background-image: url('../../assets/image2.png'); 
     background-size: cover;
-    background-position: center;
+    /* background-position: top; */
     min-height:100vh;
     color: white;
     padding: 20px;
@@ -95,4 +95,28 @@
   .card-title {
     font-size: 50px;
     font-weight: 600;
+  }
+
+  .more {
+    display: flex;
+    justify-content: center;
+  }
+
+  .more-btn{
+    width:40%;
+    text-align: center;
+    background-color:transparent;
+    border: 2px solid #dfdfdf;
+    color: #dfdfdf;
+    padding: 7px 20px;
+    margin-left: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: all 0.15s ease-in-out;
+    
+  }
+  .more-btn:hover{
+    background-color: #dfdfdf;
+    color:#212529;
   }

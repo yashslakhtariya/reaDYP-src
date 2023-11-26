@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { TrendingBooksService } from '../trending-books.service';
 
 @Component({
   selector: 'app-home',
@@ -7,5 +8,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-
+trending:any[] =[]
+constructor(private tbook:TrendingBooksService){
+    this.trending= tbook.books
+}
 }

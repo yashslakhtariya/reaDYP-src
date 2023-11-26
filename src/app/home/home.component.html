@@ -37,4 +37,19 @@
           <span class="visually-hidden">Next</span>
         </button>
       </div>
+      <div class="trending">
+        <h1>Trending Titles</h1>
+        <div class="row text-center row-cols-1 row-cols-md-2 row-cols-lg-3">
+            <div class="col mb-4" *ngFor="let t of trending">
+                <div class="card" >
+                    <img [src]="t.coverImg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{t.title}}</h5>
+                        <h6 class="card-subtitle mb-2 author"> {{t.author}}</h6>
+                        <p class="card-text">{{t.shortDesc}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>

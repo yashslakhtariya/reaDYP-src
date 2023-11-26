@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'reaDYP';
-  constructor(private router: Router) {}
+  constructor(private router: Router,private route: ActivatedRoute) {}
 
   showNavbar(): boolean {
     const currentRoute = this.router.url;

@@ -29,8 +29,13 @@
 .active {
     color:white !important
 }
+.rl-active {
+    background-color:white;
+    color: rgb(255, 82, 82);
+}
+
 .navbar-nav a {
-    color:#bbbbbbee;
+    color:#d3d3d3ee;
     padding-bottom: 15px;
     margin-right: 5%; 
     font-size: 1.1rem;
@@ -85,5 +90,5 @@
 
 .wish-list i:hover {
     background-color:white;
-    color: rgb(32, 32, 32);
+    color: rgb(255, 82, 82);
 }
