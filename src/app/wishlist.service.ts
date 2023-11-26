@@ -29,4 +29,17 @@ export class WishlistService {
         });
     });
   }
+
+  deleteFromWishlist(username: string, title: string, authors: string): Observable<any> {
+    return new Observable(observer => {
+      axios.delete(`${this.apiUrl}/wishlist/delete/${username}/${title}/${authors}`)
+        .then(response => {
+          observer.next(response.data);
+          observer.complete();
+        })
+        .catch(error => {
+          observer.error(error);
+        });
+    });
+  }
 }
