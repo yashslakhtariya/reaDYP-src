@@ -8,10 +8,9 @@ const port = 3000;
 
 app.use(cors());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
 // Connect to MongoDB
-mongoose.connect("mongodb://database:27017").then(console.log('Connected!'));
+mongoose.connect("mongodb://database:27017/").then(console.log('Connected!'));
 
 // Define MongoDB schema
 const userSchema = new mongoose.Schema({
