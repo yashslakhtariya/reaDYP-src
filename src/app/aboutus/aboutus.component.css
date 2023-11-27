@@ -1,7 +1,8 @@
 .main {
-  background-image: url('../../assets/login1.png');
+  background-image: url('../../assets/image2.png');
   background-size: cover;
-  background-position: 0px 10%;
+  background-position: center;
+  /* background-color: #6c757d; */
   color: white;
   padding: 40px;
   font-family: "roboto";
