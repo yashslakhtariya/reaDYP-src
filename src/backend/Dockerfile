@@ -6,7 +6,7 @@ COPY package*.json /app/
 
 COPY server.js /app/
 
-RUN npm install
+RUN npm install express body-parser cors mongoose
 
 CMD ["node", "server.js"]
 

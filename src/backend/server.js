@@ -1,114 +1,105 @@
 const express = require("express");
-const mysql = require("mysql");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const mongoose = require("mongoose");
 
 const app = express();
 const port = 3000;
 
 app.use(cors());
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-let connection = mysql.createConnection({
-     host: "database",
-     port: 3308,
-     user: "root",
-     // password: "rdyp",
-     database: "reaDYP_users",
+// Connect to MongoDB
+mongoose.connect("mongodb://database:27017").then(console.log('Connected!'));
+
+// Define MongoDB schema
+const userSchema = new mongoose.Schema({
+     username: String,
+     password: String,
 });
 
-connection.connect();
+const wishlistSchema = new mongoose.Schema({
+     username: String,
+     title: String,
+     authors: String,
+     infoLink: String,
+     imageLink: String,
+});
 
-app.post("/signup", (req, res) => {
+const User = mongoose.model("User", userSchema);
+const Wishlist = mongoose.model("Wishlist", wishlistSchema);
+
+app.post("/signup", async (req, res) => {
      const { username, password } = req.body;
 
-     const sql = "INSERT INTO users VALUES (?, ?)";
-     connection.query(sql, [username, password], (err, result) => {
-          if (err) {
-               console.error(err);
-               res.status(500).send(`Error signing up: ${err.message}`);
-          } else {
+     try {
+          const user = new User({ username, password });
+          await user.save();
+          res.status(200).send("done");
+     } catch (err) {
+          console.error(err);
+          res.status(500).send(`Error signing up: ${err.message}`);
+     }
+});
+
+app.post("/login", async (req, res) => {
+     const { username, password } = req.body;
+
+     try {
+          const user = await User.findOne({ username, password });
+          if (user) {
                res.status(200).send("done");
-          }
-     });
-});
-
-app.post('/login', (req, res) => {
-     const { username, password } = req.body;
-
-     const sql = 'SELECT * FROM users WHERE username = ? AND password = ?';
-     connection.query(sql, [username, password], (err, result) => {
-          if (err) {
-               console.error(err);
-               res.status(500).send('Error checking credentials');
           } else {
-               if (result.length > 0) {
-                    // User found, credentials are valid
-                    res.status(200).send('done');
-               } else {
-                    // No user found with provided credentials
-                    res.status(401).send('error');
-               }
+               res.status(401).send("error");
           }
-     });
+     } catch (err) {
+          console.error(err);
+          res.status(500).send("Error checking credentials");
+     }
 });
 
-app.post('/wishlist/add', (req, res) => {
+app.post("/wishlist/add", async (req, res) => {
      const { username, title, authors, infoLink, imageLink } = req.body;
 
-     // Check if the book is already in the wishlist
-     const checkDuplicateSql = 'SELECT * FROM wishlist WHERE username = ? AND title = ? AND authors = ?';
-     connection.query(checkDuplicateSql, [username, title, authors], (err, duplicateResult) => {
-          if (err) {
-               console.error(err);
-               res.status(500).send('Error checking duplicate wishlist item');
+     try {
+          const duplicateResult = await Wishlist.findOne({ username, title, authors });
+
+          if (!duplicateResult) {
+               const wishlistItem = new Wishlist({ username, title, authors, infoLink, imageLink });
+               await wishlistItem.save();
+               res.status(200).send("Book added to wishlist");
           } else {
-               if (duplicateResult.length === 0) {
-                    // Insert the book into the wishlist
-                    const insertSql = 'INSERT INTO wishlist (username, title, authors, infoLink, imageLink) VALUES (?, ?, ?, ?, ?)';
-                    connection.query(insertSql, [username, title, authors, infoLink, imageLink], (insertErr, insertResult) => {
-                         if (insertErr) {
-                              console.error(insertErr);
-                              res.status(500).send('Error adding book to wishlist');
-                         } else {
-                              res.status(200).send('Book added to wishlist');
-                         }
-                    });
-               } else {
-                    // Book is already in the wishlist
-                    res.status(200).send('Book is already in the wishlist');
-               }
+               res.status(200).send("Book is already in the wishlist");
           }
-     });
+     } catch (err) {
+          console.error(err);
+          res.status(500).send("Error adding book to wishlist");
+     }
 });
 
-app.get('/readlist/:username', (req, res) => {
-     const username = req.params.username;
+app.get("/readlist/:username", async (req, res) => {
+     const user = req.params.username;
 
-     const sql = 'SELECT * FROM wishlist WHERE username = ?';
-     connection.query(sql, [username], (err, result) => {
-          if (err) {
-               console.error(err);
-               res.status(500).send('Error fetching readlist');
-          } else {
-               res.status(200).json(result);
-          }
-     });
+     try {
+          let result = await Wishlist.find({ username: user });
+          res.status(200).json(result);
+     } catch (err) {
+          console.error(err);
+          res.status(500).send("Error fetching readlist");
+     }
 });
 
-app.delete('/wishlist/delete/:username/:title/:authors', (req, res) => {
+app.delete("/wishlist/delete/:username/:title/:authors", async (req, res) => {
      const { username, title, authors } = req.params;
 
-     // Delete the book from the wishlist
-     const sql = 'DELETE FROM wishlist WHERE username = ? AND title = ? AND authors = ?';
-     connection.query(sql, [username, title, authors], (err, result) => {
-          if (err) {
-               console.error(err);
-               res.status(500).send('Error deleting book from wishlist');
-          } else {
-               res.status(200).send('Book deleted from wishlist');
-          }
-     });
+     try {
+          await Wishlist.deleteOne({ username, title, authors });
+          res.status(200).send("Book deleted from wishlist");
+     } catch (err) {
+          console.error(err);
+          res.status(500).send("Error deleting book from wishlist");
+     }
 });
 
 app.listen(port, () => {

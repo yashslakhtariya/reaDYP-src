@@ -6,17 +6,17 @@ services:
   database:
     image: database
     environment:
-      MYSQL_ALLOW_EMPTY_PASSWORD: yes
-      MYSQL_DATABASE: reaDYP_users
+      # MONGO_INITDB_ROOT_USERNAME: root
+      # MONGO_INITDB_ROOT_PASSWORD: examplePassword  
+      MONGO_INITDB_DATABASE: reaDYP_users
     ports:
-      - "3308:3306"
-    # command: --default-authentication-plugin=mysql_native_password
+      - "27017:27017"
 
   # Frontend Service
   frontend:
     image: frontend
     ports:
-      - "6001:4200"
+      - "8888:80"
     depends_on:
       - backend
 

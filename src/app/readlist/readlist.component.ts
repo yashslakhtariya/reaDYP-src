@@ -19,7 +19,7 @@ export class ReadlistComponent {
 
   ngOnInit(): void {
     this.sharedService.username$.subscribe((username) => {
-      this.user = username.charAt(0).toUpperCase() + username.slice(1);
+      this.user = username;
     });
     this.readlistService.getReadlist(this.user)
       .subscribe({
