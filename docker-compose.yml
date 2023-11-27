@@ -4,8 +4,8 @@ services:
 
   # Database Service
   database:
-    image: database
-    container_name: database
+    image: yashslakhtariya/readyp_database
+    container_name: reaDYP_database
     environment:
       # MONGO_INITDB_ROOT_USERNAME: root
       # MONGO_INITDB_ROOT_PASSWORD: examplePassword  
@@ -15,17 +15,17 @@ services:
 
   # Frontend Service
   frontend:
-    image: frontend
-    container_name: frontend
+    image: yashslakhtariya/readyp_frontend
+    container_name: reaDYP_frontend
     ports:
-      - "8888:80"
+      - "4200:4200"
     depends_on:
       - backend
 
   # Backend Service
   backend:
-    image: backend
-    container_name: backend
+    image: yashslakhtariya/readyp_backend
+    container_name: reaDYP_backend
     ports:
       - "3000:3000"
     depends_on:

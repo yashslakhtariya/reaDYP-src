@@ -4,12 +4,14 @@ WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm install
+RUN npm install 
 
-COPY . .
+RUN npm install express
 
-RUN npm run build --prod
+COPY app.js .
 
-EXPOSE 80
+COPY ./dist/ ./dist/
 
-CMD ["npm", "start"]
+EXPOSE 4200
+
+CMD ["node", "app.js"]
