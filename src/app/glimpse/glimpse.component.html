@@ -21,6 +21,7 @@
               <strong>Author(s):</strong> {{ book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'N/A' }}
             </p>
             <p class="card-text">{{ book.volumeInfo.description || 'No description available' }}</p>
+            <button class="btn btn-primary" (click)="addToWishlist(book)">Add</button>
           </div>
         </div>
       </div>
