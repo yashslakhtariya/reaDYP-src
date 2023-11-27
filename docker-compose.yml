@@ -5,6 +5,7 @@ services:
   # Database Service
   database:
     image: database
+    container_name: database
     environment:
       # MONGO_INITDB_ROOT_USERNAME: root
       # MONGO_INITDB_ROOT_PASSWORD: examplePassword  
@@ -15,6 +16,7 @@ services:
   # Frontend Service
   frontend:
     image: frontend
+    container_name: frontend
     ports:
       - "8888:80"
     depends_on:
@@ -23,6 +25,7 @@ services:
   # Backend Service
   backend:
     image: backend
+    container_name: backend
     ports:
       - "3000:3000"
     depends_on:
