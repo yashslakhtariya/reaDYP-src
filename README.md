@@ -40,7 +40,7 @@ ReaDYP is a cross-platform book-recommendation system helping users to get ebook
 1. Clone this repository in your desired directory
 ```
 git clone https://github.com/yashslakhtariya/reaDYP-src.git
-cd reaDYP
+cd reaDYP-src
 ```
 2. Ensure docker is running and run (**_docker-compose_** or **_docker compose_** as per docker installation)
 ```
